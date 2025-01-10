@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Kevin Raneri <kevin.raneri@gmail.com>
+Date: Wed, 27 Dec 2023 22:49:53 -0500
+Subject: [PATCH] TPS catchup
+
+
+diff --git a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
+index 309fc4c961d1b6991130076395c0e38d71a4d9dd..b90dd720e02ee50784f4dc29725be74f69c189b4 100644
+--- a/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
++++ b/src/main/java/gg/pufferfish/pufferfish/PufferfishConfig.java
+@@ -185,6 +185,14 @@ public class PufferfishConfig {
+ 				"disabling this option.",
+ 				"This can be overridden per-player with the permission pufferfish.usebooks");
+ 	}
++
++	public static boolean tpsCatchup;
++	private static void tpsCatchup() {
++		tpsCatchup = getBoolean("tps-catchup", true,
++				"If this setting is true, the server will run faster after a lag spike in",
++				"an attempt to maintain 20 TPS. This option (defaults to true per",
++				"spigot/paper) can cause mobs to move fast after a lag spike.");
++	}
+ 	
+ 	public static boolean enableSuffocationOptimization;
+ 	private static void suffocationOptimization() {
